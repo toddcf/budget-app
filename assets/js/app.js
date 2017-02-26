@@ -10,3 +10,13 @@ var budgetController = (function() {
 		}
 	}
 })();
+
+// UI Controller Module (also an IIFE):
+var UIController = (function() {
+
+})();
+
+// App Controller that brokers all the different modules:
+var controller = (function() {
+	
+})();
