@@ -9,6 +9,5 @@
 2. Data Module.
   - Add new data to data structure.
   - Update the budget.
-3. Controller Module.
+3. Controller Module (controls the app and serves as a link between the other modules).
   - Add event handler to handle user input of income/expense description & value.
-  - (This module controls the app and serves as a link between the other modules.)
