@@ -5,7 +5,15 @@ var budgetController = ( function() {
 
 // UI Controller Module (also an IIFE):
 var UIController = ( function() {
-
+	return {
+		getInput: function() {
+			return {
+				type: document.querySelector(".add__type").value; // Will be either inc or exp.
+				description: document.querySelector("add__description").value;
+				value: document.querySelector("add__value").value;
+			}
+		}
+	};
 }) ();
 
 // Global App Controller that communicates between all the other modules, which are passed into it as arguments:
