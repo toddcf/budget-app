@@ -14,6 +14,21 @@ var budgetController = ( function() {
 		this.description = description;
 		this.value = value;
 	};
+
+	/*
+	Empty arrays in which to store all new expenses and incomes as they are created,
+	all stored inside an object to keep the code clean and the data in one place:
+	*/
+	var data = {
+		allItems = {
+			exp: [],
+			inc: []
+		},
+		totals = {
+			exp: 0,
+			inc: 0
+		}
+	}
 	
 }) ();
 
