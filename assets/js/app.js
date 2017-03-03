@@ -19,12 +19,19 @@ var UIController = ( function() {
 				description: document.querySelector(DOMstrings.inputDescription).value,
 				value: document.querySelector(DOMstrings.inputValue).value
 			};
+		},
+		// Export DOMstrings object for use in the Global App Controller:
+		getDOMstrings: function() {
+			return DOMstrings;
 		}
 	};
 }) ();
 
 // Global App Controller IIFE that communicates between all the other modules, which are passed into it as arguments:
 var controller = ( function( budgetCtrl , UICtrl ) {
+
+	// Import the UI Controller's exported DOMstrings object:
+	var DOM = UICtrl.getDOMstrings();
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
 	var ctrlAddItem = function() {
