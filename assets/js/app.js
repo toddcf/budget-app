@@ -45,7 +45,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 				ctrlAddItem();
 			}
 		});
-	}
+	};
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
 	var ctrlAddItem = function() {
@@ -56,6 +56,22 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// 3. Add the new item to the user interface.
 		// 4. Calculate the budget.
 		// 5. Display budget in user interface.
+	};
+
+	return {
+		// Initialization function to call the event listeners that are inside this Global App Controller:
+		init: function() {
+			console.log("Application has started.");
+			setupEventListeners();
+		}
 	}
 
 }) ( budgetController , UIController );
+
+// Call the init function to start the app:
+controller.init();
+
+
+
+
+
