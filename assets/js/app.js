@@ -7,6 +7,13 @@ var budgetController = ( function() {
 		this.description = description;
 		this.value = value;
 	};
+
+	// Function constructor for income:
+	var Income = function( id, description, value ) {
+		this.id = id;
+		this.description = description;
+		this.value = value;
+	};
 	
 }) ();
 
