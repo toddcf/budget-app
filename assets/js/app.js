@@ -1,5 +1,12 @@
 // Budget Controller Module (an IIFE that returns an object):
 var budgetController = ( function() {
+
+	// Function constructor for expenses:
+	var Expense = function( id, description, value ) {
+		this.id = id;
+		this.description = description;
+		this.value = value;
+	};
 	
 }) ();
 
@@ -16,9 +23,9 @@ var UIController = ( function() {
 	return {
 		getInput: function() {
 			return {
-				type: document.querySelector(DOMstrings.inputType).value,
-				description: document.querySelector(DOMstrings.inputDescription).value,
-				value: document.querySelector(DOMstrings.inputValue).value
+				type: document.querySelector( DOMstrings.inputType ).value,
+				description: document.querySelector( DOMstrings.inputDescription ).value,
+				value: document.querySelector( DOMstrings.inputValue ).value
 			};
 		},
 		// Export DOMstrings object for use in the Global App Controller:
@@ -37,10 +44,10 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		var DOM = UICtrl.getDOMstrings();
 		
 		// Event listener for button click:
-		document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem );
+		document.querySelector( DOM.inputBtn ).addEventListener( "click", ctrlAddItem );
 
 		// Event listener for ENTER key:
-		document.addEventListener("keypress", function(event) {
+		document.addEventListener( "keypress", function( event ) {
 			if ( event.keyCode === 13 || event.which === 13 ) {
 				ctrlAddItem();
 			}
@@ -51,7 +58,6 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 	var ctrlAddItem = function() {
 		// 1. Get field input data.
 		var input = UICtrl.getInput();
-		console.log(input);
 		// 2. Add item to budget controller.
 		// 3. Add the new item to the user interface.
 		// 4. Calculate the budget.
@@ -61,7 +67,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 	return {
 		// Initialization function to call the event listeners that are inside this Global App Controller:
 		init: function() {
-			console.log("Application has started.");
+			console.log( "Application has started." );
 			setupEventListeners();
 		}
 	}
