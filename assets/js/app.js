@@ -31,8 +31,21 @@ var UIController = ( function() {
 // Global App Controller IIFE that communicates between all the other modules, which are passed into it as arguments:
 var controller = ( function( budgetCtrl , UICtrl ) {
 
-	// Import the UI Controller's exported DOMstrings object:
-	var DOM = UICtrl.getDOMstrings();
+	var setupEventListeners = function() {
+		
+		// Import the UI Controller's exported DOMstrings object:
+		var DOM = UICtrl.getDOMstrings();
+		
+		// Event listener for button click:
+		document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem );
+
+		// Event listener for ENTER key:
+		document.addEventListener("keypress", function(event) {
+			if ( event.keyCode === 13 || event.which === 13 ) {
+				ctrlAddItem();
+			}
+		});
+	}
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
 	var ctrlAddItem = function() {
@@ -45,13 +58,4 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// 5. Display budget in user interface.
 	}
 
-	// Event listener for button click:
-	document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem );
-
-	// Event listener for ENTER key:
-	document.addEventListener("keypress", function(event) {
-		if ( event.keyCode === 13 || event.which === 13 ) {
-			ctrlAddItem();
-		}
-	});
 }) ( budgetController , UIController );
