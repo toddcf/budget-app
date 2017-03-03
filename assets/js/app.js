@@ -9,7 +9,8 @@ var UIController = ( function() {
 	var DOMstrings = {
 		inputType: ".add__type",
 		inputDescription: ".add__description",
-		inputValue: ".add__value"
+		inputValue: ".add__value",
+		inputBtn: ".add__btn"
 	};
 
 	return {
@@ -45,7 +46,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 	}
 
 	// Event listener for button click:
-	document.querySelector(".add__btn").addEventListener("click", ctrlAddItem );
+	document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem );
 
 	// Event listener for ENTER key:
 	document.addEventListener("keypress", function(event) {
