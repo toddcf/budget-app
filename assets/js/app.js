@@ -28,6 +28,28 @@ var budgetController = ( function() {
 			exp: 0,
 			inc: 0
 		}
+	};
+
+	return {
+		addItem: function( type, des, val ) {
+			var newItem;
+			// Generate an ID number that is the next number after the last number in the appropriate array:
+			var ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+
+			// If the new item being created is an expense, use the Expense function constructor:
+			if ( type === "exp" ) {
+				newItem = new Expense ( ID, des, val);
+			}
+			// If the new item being created is income, use the Income function constructor:
+			else if ( type === "inc" ) {
+				newItem = new Income ( ID, des, val);
+			}
+
+			// Pass whichever type it is into this statement so that it adds the data to the end of the appropriate array:
+			data.allItems[type].push( newItem );
+			// Give the other controller access to this item:
+			return newItem;
+		}
 	}
 	
 }) ();
