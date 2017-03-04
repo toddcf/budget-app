@@ -87,6 +87,7 @@ var UIController = ( function() {
 		},
 		addListItem: function( obj, type ) {
 			var html;
+			var newHtml;
 			/*
 			Create HTML string with placeholder text. NOTE: It CAN'T have line breaks or spaces between it.
 			There is a version for if the type is expense and if the type is income.
@@ -97,8 +98,10 @@ var UIController = ( function() {
 			else if ( type === "exp" ) {
 				html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			}
-			
 			// Replace the placeholder text with actual data received from the object.
+			newHtml = html.replace( "%id%", obj.id );
+			newHtml = newHtml.replace( "%description%", obj.description );
+			newHtml = newHtml.replace( "%value%", obj.value );
 			// Insert the HTML into the DOM.
 		},
 
