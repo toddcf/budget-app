@@ -103,6 +103,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// 1. Get field input data.
 		var input = UICtrl.getInput();
 		// 2. Add item to budget controller.
+		var newItem = budgetCtrl.addItem( input.type, input.description, input.value );
 		// 3. Add the new item to the user interface.
 		// 4. Calculate the budget.
 		// 5. Display budget in user interface.
