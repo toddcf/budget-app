@@ -20,11 +20,11 @@ var budgetController = ( function() {
 	all stored inside an object to keep the code clean and the data in one place:
 	*/
 	var data = {
-		allItems = {
+		allItems: {
 			exp: [],
 			inc: []
 		},
-		totals = {
+		totals: {
 			exp: 0,
 			inc: 0
 		}
@@ -33,8 +33,18 @@ var budgetController = ( function() {
 	return {
 		addItem: function( type, des, val ) {
 			var newItem;
-			// Generate an ID number that is the next number after the last number in the appropriate array:
-			var ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+			var ID;
+			/*
+			Generate an ID number that is the next number after the last number in the appropriate array.
+			But the array must have a length greater than zero or else it will be -1 and return undefined.
+			So if it is not greater than zero, manually set it to zero.
+			*/
+			if ( data.allItems[type].length > 0 ) {
+				ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+			}
+			else {
+				ID = 0;
+			}
 
 			// If the new item being created is an expense, use the Expense function constructor:
 			if ( type === "exp" ) {
@@ -49,6 +59,9 @@ var budgetController = ( function() {
 			data.allItems[type].push( newItem );
 			// Give the other controller access to this item:
 			return newItem;
+		},
+		testing: function() {
+			console.log( data );
 		}
 	}
 	
