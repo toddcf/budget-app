@@ -185,7 +185,7 @@ var UIController = ( function() {
 				document.querySelector( DOMstrings.percentageLabel ).textContent = obj.percentage + "%";
 			}
 			else {
-				document.querySelector( DOMstrings.percentageLabel ).textContent = "--";
+				document.querySelector( DOMstrings.percentageLabel ).textContent = "--%";
 			}
 		},
 
@@ -246,6 +246,13 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// Initialization function to call the event listeners that are inside this Global App Controller:
 		init: function() {
 			console.log( "Application has started." );
+			// Reset everything to zero upon first starting:
+			UICtrl.displayBudget({
+				budget: 0,
+				totalInc: 0,
+				totalExp: 0,
+				percentage: -1
+			});
 			setupEventListeners();
 		}
 	}
