@@ -170,14 +170,17 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 	var ctrlAddItem = function() {
 		// 1. Get field input data.
 		var input = UICtrl.getInput();
-		// 2. Add item to budget controller.
-		var newItem = budgetCtrl.addItem( input.type, input.description, input.value );
-		// 3. Add the new item to the user interface.
-		UICtrl.addListItem( newItem, input.type );
-		// 4. Clear the fields.
-		UICtrl.clearFields();
-		// 5. Calculate and update budget (by calling that separate function).
-		updateBudget();
+		// Validate input before accepting it. Can't be empty string; must be a number; must be greater than zero:
+		if ( input.description !== "" && !isNaN(input.value) && input.value > 0 ) {
+			// 2. Add item to budget controller.
+			var newItem = budgetCtrl.addItem( input.type, input.description, input.value );
+			// 3. Add the new item to the user interface.
+			UICtrl.addListItem( newItem, input.type );
+			// 4. Clear the fields.
+			UICtrl.clearFields();
+			// 5. Calculate and update budget (by calling that separate function).
+			updateBudget();
+		}
 	};
 
 	return {
