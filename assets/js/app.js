@@ -74,7 +74,7 @@ var UIController = ( function() {
 		inputType: ".add__type",
 		inputDescription: ".add__description",
 		inputValue: ".add__value",
-		inputBtn: ".add__btn"
+		inputBtn: ".add__btn",
 		incomeContainer: ".income__list",
 		expensesContainer: ".expenses__list"
 	};
@@ -90,21 +90,32 @@ var UIController = ( function() {
 		addListItem: function( obj, type ) {
 			var html;
 			var newHtml;
-			/*
-			Create HTML string with placeholder text. NOTE: It CAN'T have line breaks or spaces between it.
-			There is a version for if the type is expense and if the type is income.
-			*/
+			var element;
+			
 			if ( type === "inc" ) {
+				element = DOMstrings.incomeContainer;
+				/*
+				Create HTML string with placeholder text. NOTE: It CAN'T have line breaks or spaces between it.
+				There is a version for if the type is expense and if the type is income.
+				*/
 				html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			}
 			else if ( type === "exp" ) {
+				element = DOMstrings.expensesContainer;
 				html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			}
 			// Replace the placeholder text with actual data received from the object.
 			newHtml = html.replace( "%id%", obj.id );
 			newHtml = newHtml.replace( "%description%", obj.description );
 			newHtml = newHtml.replace( "%value%", obj.value );
-			// Insert the HTML into the DOM.
+			// Insert the HTML (for whichever element is in use) into the DOM, as the last element in the existing list.
+			document.querySelector(element).insertAdjacentHTML("beforeend" , newHtml)
+		},
+
+		// Clear input fields upon button click or keypress:
+		clearFields: function() {
+			var fields;
+			fields = document.querySelectorAll(DOMstrings.inputDescription + ", " + DOMstrings.inputValue);
 		},
 
 
@@ -126,7 +137,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// Event listener for button click:
 		document.querySelector( DOM.inputBtn ).addEventListener( "click", ctrlAddItem );
 
-		// Event listener for ENTER key:
+		// Event listener for ENTER key, aka key 13:
 		document.addEventListener( "keypress", function( event ) {
 			if ( event.keyCode === 13 || event.which === 13 ) {
 				ctrlAddItem();
@@ -141,6 +152,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// 2. Add item to budget controller.
 		var newItem = budgetCtrl.addItem( input.type, input.description, input.value );
 		// 3. Add the new item to the user interface.
+		UICtrl.addListItem( newItem, input.type );
 		// 4. Calculate the budget.
 		// 5. Display budget in user interface.
 	};
