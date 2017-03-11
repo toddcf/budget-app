@@ -15,6 +15,17 @@ var budgetController = ( function() {
 		this.value = value;
 	};
 
+	var calculateTotal = function( type ) {
+		// Set initial value of sum to zero:
+		var sum = 0;
+		// Loop over entire array. 'cur' refers to either income or expense:
+		data.allItems[type].forEach(function( cur ) {
+			// Shorter way of writing sum = sum + cur.value:
+			sum += cur.value;
+			data.totals[type] = sum;
+		});
+	};
+
 	/*
 	Empty arrays in which to store all new expenses and incomes as they are created,
 	all stored inside an object to keep the code clean and the data in one place:
@@ -27,7 +38,10 @@ var budgetController = ( function() {
 		totals: {
 			exp: 0,
 			inc: 0
-		}
+		},
+		budget: 0,
+		// Initialize percentage to -1 so that if there are no values to calculate yet, the percentage is nonexistent:
+		percentage: -1
 	};
 
 	return {
@@ -60,6 +74,27 @@ var budgetController = ( function() {
 			// Give the other controller access to this item:
 			return newItem;
 		},
+
+		calculateBudget: function() {
+			// 1. Calculate total income and expenses.
+			calculateTotal("exp");
+			calculateTotal("inc");
+			// 2. Calculate budget (income - expenses) and store it in the global data variable:
+			data.budget = data.totals.inc - data.totals.exp;
+			// 3. Calculate percentage of income spent.
+			data.percentage = Math.round(( data.totals.exp / data.totals.inc ) * 100);
+		},
+
+		// Function that returns the budget as an object:
+		getBudget: function() {
+			return {
+				budget: data.budget,
+				totalInc: data.totals.inc,
+				totalExp: data.totals.exp,
+				percentage: data.percentage
+			};
+		},
+
 		testing: function() {
 			console.log( data );
 		}
@@ -162,8 +197,11 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 	// Update budget:
 	var updateBudget = function() {
 		// 1. Calculate the budget.
+		budgetCtrl.calculateBudget();
 		// 2. Return the budget.
+		var budget = budgetCtrl.getBudget();
 		// 3. Display budget in user interface.
+		console.log( budget );
 	}
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
