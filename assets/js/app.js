@@ -115,7 +115,18 @@ var UIController = ( function() {
 		// Clear input fields upon button click or keypress:
 		clearFields: function() {
 			var fields;
-			fields = document.querySelectorAll(DOMstrings.inputDescription + ", " + DOMstrings.inputValue);
+			var fieldsArr;
+
+			fields = document.querySelectorAll( DOMstrings.inputDescription + ", " + DOMstrings.inputValue );
+			// Use slice to convert back into an array. Tricks it into thinking we gave it an array, so it returns an array:
+			fieldsArr = Array.prototype.slice.call( fields );
+
+			// Pass a callback function into this method, which will be applied to each of the elements in the array.
+			// In the callback function, we have access to the current value, the indexOf, and the entire array.
+			// This will loop through everything in the array and set the value of all of them back to an empty string:
+			fieldsArr.forEach( function( current, index, array ) {
+				current.value = "";
+			});
 		},
 
 
@@ -153,8 +164,10 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		var newItem = budgetCtrl.addItem( input.type, input.description, input.value );
 		// 3. Add the new item to the user interface.
 		UICtrl.addListItem( newItem, input.type );
-		// 4. Calculate the budget.
-		// 5. Display budget in user interface.
+		// 4. Clear the fields.
+		UICtrl.clearFields();
+		// 5. Calculate the budget.
+		// 6. Display budget in user interface.
 	};
 
 	return {

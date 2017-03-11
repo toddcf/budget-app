@@ -22,4 +22,4 @@
 - querySelectorAll.
   - Returns a list instead of an array.
 - Slice, which returns an array. (A trick for converting the list that querySelectorAll returned . . . back into an array.)
-- foreach (as opposed to for loop).
+- forEach (as opposed to for loop).
