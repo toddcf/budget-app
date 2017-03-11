@@ -84,7 +84,7 @@ var UIController = ( function() {
 			return {
 				type: document.querySelector( DOMstrings.inputType ).value,
 				description: document.querySelector( DOMstrings.inputDescription ).value,
-				value: document.querySelector( DOMstrings.inputValue ).value
+				value: parseFloat(document.querySelector( DOMstrings.inputValue ).value)
 			};
 		},
 		addListItem: function( obj, type ) {
@@ -159,6 +159,13 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		});
 	};
 
+	// Update budget:
+	var updateBudget = function() {
+		// 1. Calculate the budget.
+		// 2. Return the budget.
+		// 3. Display budget in user interface.
+	}
+
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
 	var ctrlAddItem = function() {
 		// 1. Get field input data.
@@ -169,8 +176,8 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		UICtrl.addListItem( newItem, input.type );
 		// 4. Clear the fields.
 		UICtrl.clearFields();
-		// 5. Calculate the budget.
-		// 6. Display budget in user interface.
+		// 5. Calculate and update budget (by calling that separate function).
+		updateBudget();
 	};
 
 	return {
