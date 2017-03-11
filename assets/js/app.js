@@ -177,7 +177,10 @@ var UIController = ( function() {
 		},
 
 		displayBudget: function( obj ) {
-
+			document.querySelector( DOMstrings.budgetLabel ).textContent = obj.budget;
+			document.querySelector( DOMstrings.incomeLabel ).textContent = obj.totalInc;
+			document.querySelector( DOMstrings.expensesLabel ).textContent = obj.totalExp;
+			document.querySelector( DOMstrings.percentageLabel ).textContent = obj.percentage;
 		},
 
 		// Export DOMstrings object for use in the Global App Controller:
@@ -213,7 +216,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// 2. Return the budget.
 		var budget = budgetCtrl.getBudget();
 		// 3. Display budget in user interface.
-		console.log( budget );
+		UICtrl.displayBudget( budget );
 	}
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
