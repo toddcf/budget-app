@@ -127,6 +127,9 @@ var UIController = ( function() {
 			fieldsArr.forEach( function( current, index, array ) {
 				current.value = "";
 			});
+
+			// Set focus back to Description field after submission:
+			fieldsArr[0].focus();
 		},
 
 
