@@ -81,8 +81,13 @@ var budgetController = ( function() {
 			calculateTotal("inc");
 			// 2. Calculate budget (income - expenses) and store it in the global data variable:
 			data.budget = data.totals.inc - data.totals.exp;
-			// 3. Calculate percentage of income spent.
-			data.percentage = Math.round(( data.totals.exp / data.totals.inc ) * 100);
+			// 3. Calculate percentage of income spent (but only if it's greater than zero -- otherwise it throws off the calculation).
+			if ( data.totals.inc > 0 ) {
+				data.percentage = Math.round( ( data.totals.exp / data.totals.inc ) * 100 );
+			}
+			else {
+				data.percentage = -1;
+			}
 		},
 
 		// Function that returns the budget as an object:
