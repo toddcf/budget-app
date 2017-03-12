@@ -249,14 +249,23 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 	var ctrlDeleteItem = function( event ) {
 		var itemID;
 		var splitID;
+		var type;
+		var ID;
 		// Traverse the DOM up to the div we want to delete:
 		itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
 		// Only if itemID exists:
 		if ( itemID ) {
 			// When calling these methods on a string, JavaScript converts them into objects.
-			// We can now use the "split" method on this string/object. We will split it at the dash:
-			splitID = itemID.split("-");
+			// We can now use the "split" method on this string/object. We will split it at the dash.
+			// Now we can separate the type (income or expense) from the ID (0, 1, 2, 3, etc.).
+			splitID	= itemID.split( "-" );
+			type	= splitID[0];
+			ID		= splitID[1];
+
+			// 1. Delete the item from the data structure.
+			// 2. Delete the item from the user interface.
+			// 3. Update and show the new budget.
 		}
 	};
 
