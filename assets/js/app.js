@@ -80,12 +80,18 @@ var budgetController = ( function() {
 			var ids;
 			var index;
 			// Loop over all items in either the Income or Expenses array and return a new array with the current id:
-			ids = data.allItems[type].map( function ( current, ) {
+			ids = data.allItems[type].map( function ( current ) {
 				return current.id;
 			});
 
 			// Get the index of the id that we passed into the method, and store it in the variable INDEX:
 			index = ids.indexOf( id );
+
+			// Only delete if the index exists:
+			if ( index !== -1 ) {
+				// Start deleting at the index number; only delete that one element:
+				data.allItems[type].splice( index, 1 );
+			}
 		},
 
 		calculateBudget: function() {
@@ -274,9 +280,11 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 			// Now we can separate the type (income or expense) from the ID (0, 1, 2, 3, etc.).
 			splitID	= itemID.split( "-" );
 			type	= splitID[0];
-			ID		= splitID[1];
+			// Convert to integer and store in ID variable:
+			ID		= parseInt( splitID[1] );
 
 			// 1. Delete the item from the data structure.
+			budgetCtrl.deleteItem( type, ID );
 			// 2. Delete the item from the user interface.
 			// 3. Update and show the new budget.
 		}
