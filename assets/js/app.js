@@ -75,6 +75,11 @@ var budgetController = ( function() {
 			return newItem;
 		},
 
+		// Method for deleting items from the list:
+		deleteItem: function( type, id ) {
+
+		},
+
 		calculateBudget: function() {
 			// 1. Calculate total income and expenses.
 			calculateTotal("exp");
