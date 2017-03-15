@@ -77,8 +77,15 @@ var budgetController = ( function() {
 
 		// Method for deleting items from the list:
 		deleteItem: function( type, id ) {
-			// Loop over all items in either the Income or Expenses array:
-			data.allItems[type].map( function ( current, ) )
+			var ids;
+			var index;
+			// Loop over all items in either the Income or Expenses array and return a new array with the current id:
+			ids = data.allItems[type].map( function ( current, ) {
+				return current.id;
+			});
+
+			// Get the index of the id that we passed into the method, and store it in the variable INDEX:
+			index = ids.indexOf( id );
 		},
 
 		calculateBudget: function() {
