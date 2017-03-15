@@ -246,7 +246,13 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		var budget = budgetCtrl.getBudget();
 		// 3. Display budget in user interface.
 		UICtrl.displayBudget( budget );
-	}
+	};
+
+	var updatePercentages = function() {
+		// 1. Calculate percentages.
+		// 2. Read percentages from the budget controller.
+		// 3. Update the user interface with the new percentages.
+	};
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
 	var ctrlAddItem = function() {
@@ -262,6 +268,8 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 			UICtrl.clearFields();
 			// 5. Calculate and update budget (by calling that separate function).
 			updateBudget();
+			// 6. Calculate and update percentages.
+			updatePercentages();
 		}
 	};
 
@@ -286,7 +294,11 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 			// 1. Delete the item from the data structure.
 			budgetCtrl.deleteItem( type, ID );
 			// 2. Delete the item from the user interface.
+			UICtrl.deleteListItem( itemID );
 			// 3. Update and show the new budget.
+			updateBudget();
+			// 4. Calculate and update percentages.
+			updatePercentages();
 		}
 	};
 
