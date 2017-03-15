@@ -23,5 +23,6 @@
   - Returns a list instead of an array.
 - Slice, which returns an array. (A trick for converting the list that querySelectorAll returned . . . back into an array.)
 - forEach (as opposed to for loop).
+- Map. (Loops over an array and returns a brand new array.)
 - parseFloat(). Converts a string into a floating number (a number with decimals).
 - Using parentNode (multiple times if necessary) to traverse the DOM.

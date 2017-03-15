@@ -77,7 +77,8 @@ var budgetController = ( function() {
 
 		// Method for deleting items from the list:
 		deleteItem: function( type, id ) {
-
+			// Loop over all items in either the Income or Expenses array:
+			data.allItems[type].map( function ( current, ) )
 		},
 
 		calculateBudget: function() {
