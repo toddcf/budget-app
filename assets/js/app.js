@@ -9,6 +9,7 @@ var budgetController = ( function() {
 		this.percentage = -1;
 	};
 
+	// Calculate the percentage (each expense divided by the total income):
 	Expense.prototype.calcPercentage = function( totalIncome ) {
 		// Only calculate the percentage if totalIncome is greater than zero:
 		if ( totalIncome > 0 ) {
@@ -17,6 +18,11 @@ var budgetController = ( function() {
 		else {
 			this.percentage = -1;
 		}
+	};
+
+	// Simply retrieve the percentage from the object and then return it:
+	Expense.prototype.getPercentage = function() {
+		return this.percentage;
 	};
 
 	// Function constructor for income:
