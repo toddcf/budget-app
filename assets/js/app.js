@@ -6,6 +6,17 @@ var budgetController = ( function() {
 		this.id = id;
 		this.description = description;
 		this.value = value;
+		this.percentage = -1;
+	};
+
+	Expense.prototype.calcPercentage = function( totalIncome ) {
+		// Only calculate the percentage if totalIncome is greater than zero:
+		if ( totalIncome > 0 ) {
+			this.percentage = Math.round ( ( this.value / totalIncome ) * 100 );
+		}
+		else {
+			this.percentage = -1;
+		}
 	};
 
 	// Function constructor for income:
@@ -107,6 +118,10 @@ var budgetController = ( function() {
 			else {
 				data.percentage = -1;
 			}
+		},
+
+		calculatePercentages: function() {
+
 		},
 
 		// Function that returns the budget as an object:
