@@ -197,6 +197,13 @@ var UIController = ( function() {
 			document.querySelector(element).insertAdjacentHTML("beforeend" , newHtml)
 		},
 
+		deleteListItem: function( selectorID ) {
+			// Save this in var el for simplicity's sake in the next line:
+			var el = document.getElementById( selectorID );
+			// Now you can traverse up the DOM to the parent in order to remove its child. You can use the el variable now to write a cleaner line of code, especially since you have to use it twice:
+			el.parentNode.removeChild( el );
+		},
+
 		// Clear input fields upon button click or keypress:
 		clearFields: function() {
 			var fields;
