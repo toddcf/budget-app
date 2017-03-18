@@ -134,7 +134,7 @@ var budgetController = ( function() {
 		},
 
 		getPercentages: function() {
-			// Loop over all objects so you can call this method on each of them:
+			// For each loop iteration, call the getPercentage method, return it, and then store it in the allPerc variable:
 			var allPerc = data.allItems.exp.map( function( cur ) {
 				return cur.getPercentage();
 			});
@@ -289,8 +289,11 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 
 	var updatePercentages = function() {
 		// 1. Calculate percentages.
-		// 2. Read percentages from the budget controller.
+		budgetCtrl.calculatePercentages();
+		// 2. Read percentages from the budget controller and store in a variable:
+		var percentages = budgetCtrl.getPercentages();
 		// 3. Update the user interface with the new percentages.
+		console.log(percentages);
 	};
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
