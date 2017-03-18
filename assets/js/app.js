@@ -126,8 +126,19 @@ var budgetController = ( function() {
 			}
 		},
 
+		// Calculate the percentage for every expense that we have in our object:
 		calculatePercentages: function() {
+			data.allItems.exp.forEach( function( cur ) {
+				current.calcPercentage();
+			});
+		},
 
+		getPercentages: function() {
+			// Loop over all objects so you can call this method on each of them:
+			var allPerc = data.allItems.exp.map( function( cur ) {
+				return cur.getPercentage();
+			});
+			return allPerc;
 		},
 
 		// Function that returns the budget as an object:
