@@ -39,8 +39,8 @@ var budgetController = ( function() {
 		data.allItems[type].forEach(function( cur ) {
 			// Shorter way of writing sum = sum + cur.value:
 			sum += cur.value;
-			data.totals[type] = sum;
 		});
+		data.totals[type] = sum;
 	};
 
 	/*
@@ -252,7 +252,8 @@ var UIController = ( function() {
 		deleteListItem: function( selectorID ) {
 			// Save this in var el for simplicity's sake in the next line:
 			var el = document.getElementById( selectorID );
-			// Now you can traverse up the DOM to the parent in order to remove its child. You can use the el variable now to write a cleaner line of code, especially since you have to use it twice:
+			// Now you can traverse up the DOM to the parent in order to remove its child.
+			// You can use the el variable now to write a cleaner line of code, especially since you have to use it twice:
 			el.parentNode.removeChild( el );
 		},
 
@@ -289,7 +290,7 @@ var UIController = ( function() {
 				document.querySelector( DOMstrings.percentageLabel ).textContent = obj.percentage + "%";
 			}
 			else {
-				document.querySelector( DOMstrings.percentageLabel ).textContent = "--%";
+				document.querySelector( DOMstrings.percentageLabel ).textContent = "---";
 			}
 		},
 
