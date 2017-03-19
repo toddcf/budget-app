@@ -295,10 +295,13 @@ var UIController = ( function() {
 				int = numSplit[0];
 				// The decimal part, which is the second element of the array, aka the digits to the right of the decimal point:
 				dec = numSplit[1];
-			if ( int.length > 3 ) {
-				// Substring: First parameter is where we want to start, second is how many characters we want.
-				int.substr()
-			}
+				// Only if the integer is larger than three digits:
+				if ( int.length > 3 ) {
+					// Substring: First parameter is where we want to start, second is how many characters we want.
+					// First we take the first number, move over the length of the string MINUS three, and add the comma.
+					// Then we resume at ( int.length - 3 ) and read the next three numbers.
+					int = int.substr( 0, ( int.length - 3 ) ) + "," + int.substr( ( int.length - 3 ), 3 );
+				}
 			// + or - before the number:
 		},
 
