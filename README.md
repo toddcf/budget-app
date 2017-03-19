@@ -26,3 +26,7 @@
 - Map. (Loops over an array and returns a brand new array.)
 - parseFloat(). Converts a string into a floating number (a number with decimals).
 - Using parentNode (multiple times if necessary) to traverse the DOM.
+- Math.abs to get the absolute value of a number (no + or - value).
+- toFixed() to set decimal places to a fixed amount.
+- How to add a comma separator for every three digits in a number.
+- Substring method: substr(); only takes part of a string.
