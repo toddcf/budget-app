@@ -265,9 +265,15 @@ var UIController = ( function() {
 			// When we call this nodeListForEach function, we pass a callback function into it.
 			// This function is assigned to the callback parameter above ("callback").
 			nodeListForEach( fields, function( current, index ) {
-				// At the first element, we want the first percentage.
-				// At the second element, we want the second percentage. And so forth.
-				current.textContent = percentages[ index ];
+				// If above zero, display the percentage for each:
+				if ( percentages[ index ] > 0 ) {
+					// At the first element, we want the first percentage.
+					// At the second element, we want the second percentage. And so forth.
+					current.textContent = percentages[ index ] + "%";
+				}
+				else {
+					current.textContent = "---";
+				}
 			});
 		},
 
