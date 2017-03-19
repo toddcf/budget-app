@@ -369,6 +369,9 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 
 		// Event listener for delete buttons:
 		document.querySelector( DOM.container ).addEventListener( "click", ctrlDeleteItem );
+
+		// Change Event for the border color of input fields (depending on inc or exp):
+		document.querySelector( DOM.inputType ).addEventListener( "change", UICtrl.changedType );
 	};
 
 	// Update budget:
