@@ -30,3 +30,7 @@
 - toFixed() to set decimal places to a fixed amount.
 - How to add a comma separator for every three digits in a number.
 - Substring method: substr(); only takes part of a string.
+
+## Future Iterations:
+
+- Fix commas to appear every three digits instead of only after the first three digits.
