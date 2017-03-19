@@ -346,12 +346,16 @@ var UIController = ( function() {
 
 		// Change Event:
 		changedType: function() {
-			// Assign red class to fields and red-focus class to button if type = exp:
+			// Use toggle to assign red class to fields and red-focus class to button if type = exp, and default back to blue if not:
 			var fields = document.querySelectorAll(
 				DOMstrings.inputType + ", " + 
 				DOMstrings.inputDescription + ", " + 
 				DOMstrings.inputValue 
 			);
+
+			nodeListForEach( fields, function( cur ) {
+				cur.classList.toggle("red-focus")
+			});
 		},
 
 
