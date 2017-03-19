@@ -202,7 +202,7 @@ var UIController = ( function() {
 				int = int.substr( 0, ( int.length - 3 ) ) + "," + int.substr( ( int.length - 3 ), 3 );
 			}
 		// + or - before the number (and return everything):
-		return ( type === "exp" ? "- $" : "+ $" ) + int + dec;
+		return ( type === "exp" ? "- $" : "+ $" ) + int + "." + dec;
 	};
 
 	return {
