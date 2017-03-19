@@ -346,16 +346,20 @@ var UIController = ( function() {
 
 		// Change Event:
 		changedType: function() {
-			// Use toggle to assign red class to fields and red-focus class to button if type = exp, and default back to blue if not:
+			// Use toggle to assign red class to fields and red-focus class to button if type = exp, and default back to blue if not.
+			// First store the multiple parameters in a variable to make them easier to pass into the nodeListForEach function:
 			var fields = document.querySelectorAll(
 				DOMstrings.inputType + ", " + 
 				DOMstrings.inputDescription + ", " + 
 				DOMstrings.inputValue 
 			);
 
+			// Pass in the fields from above, followed by a callback function:
 			nodeListForEach( fields, function( cur ) {
-				cur.classList.toggle("red-focus")
+				cur.classList.toggle("red-focus");
 			});
+
+			document.querySelector( DOMstrings.inputBtn ).classList.toggle( "red" );
 		},
 
 
