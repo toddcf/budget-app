@@ -30,6 +30,11 @@
 - toFixed() to set decimal places to a fixed amount.
 - How to add a comma separator for every three digits in a number.
 - Substring method: substr(); only takes part of a string.
+- Using the Date object:
+  - Get the current date.
+  - getFullYear();
+  - getMonth();
+  - Creating an array of month names (as strings) to be accessed by getMonth();
 
 ## Future Iterations:
 
