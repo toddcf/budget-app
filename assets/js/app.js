@@ -172,7 +172,8 @@ var UIController = ( function() {
 		incomeLabel: ".budget__income--value",
 		expensesLabel: ".budget__expenses--value",
 		percentageLabel: ".budget__expenses--percentage",
-		container: ".container"
+		container: ".container",
+		expensesPercLabel: ".item__percentage"
 	};
 
 	return {
@@ -246,6 +247,12 @@ var UIController = ( function() {
 			else {
 				document.querySelector( DOMstrings.percentageLabel ).textContent = "--%";
 			}
+		},
+
+		// Display percentages in the UI:
+		displayPercentages: function( percentages ) {
+			// Return a nodelist:
+			var fields = document.querySelectorAll( DOMstrings.expensesPercLabel );
 		},
 
 		// Export DOMstrings object for use in the Global App Controller:
