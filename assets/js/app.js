@@ -299,10 +299,11 @@ var UIController = ( function() {
 				if ( int.length > 3 ) {
 					// Substring: First parameter is where we want to start, second is how many characters we want.
 					// First we take the first number, move over the length of the string MINUS three, and add the comma.
-					// Then we resume at ( int.length - 3 ) and read the next three numbers.
+					// Then we resume at ( int.length - 3 ) and move over another three digits.
 					int = int.substr( 0, ( int.length - 3 ) ) + "," + int.substr( ( int.length - 3 ), 3 );
 				}
-			// + or - before the number:
+			// + or - before the number (and return everything):
+			return ( type === "exp" ? "- $" : "+ $" ) + int + dec;
 		},
 
 		// Export DOMstrings object for use in the Global App Controller:
