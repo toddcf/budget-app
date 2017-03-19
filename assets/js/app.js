@@ -322,7 +322,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// 2. Read percentages from the budget controller and store in a variable:
 		var percentages = budgetCtrl.getPercentages();
 		// 3. Update the user interface with the new percentages.
-		console.log(percentages);
+		UICtrl.displayPercentages( percentages );
 	};
 
 	// Control Add Item Function to be executed when button or ENTER key is clicked:
