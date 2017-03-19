@@ -320,6 +320,9 @@ var UIController = ( function() {
 			// Object contstructor for date. (If we don't pass anything into it, it returns today's date.)
 			now = new Date();
 			year = now.getFullYear
+
+			// Set the textContent of the class (stored in dateLabel) to whatever value we stored in the year variable:
+			document.querySelector( DOMstrings.dateLabel ).textContent = year;
 		},
 
 
