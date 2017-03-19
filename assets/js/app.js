@@ -253,6 +253,20 @@ var UIController = ( function() {
 		displayPercentages: function( percentages ) {
 			// Return a nodelist:
 			var fields = document.querySelectorAll( DOMstrings.expensesPercLabel );
+			
+			var nodeListForEach = function( list, callback ) {
+				// A for loop which calls the callback function in each iteration:
+				for ( var i = 0; i < list.length; i++ ) {
+					// list[i] is passed in as current. i is passed in as index.
+					callback( list[i], i );
+				}
+			};
+
+			// When we call this nodeListForEach function, we pass a callback function into it.
+			// This function is assigned to the callback parameter above ("callback").
+			nodeListForEach( fields, function( current, index ) {
+
+			});
 		},
 
 		// Export DOMstrings object for use in the Global App Controller:
