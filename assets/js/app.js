@@ -173,7 +173,8 @@ var UIController = ( function() {
 		expensesLabel: ".budget__expenses--value",
 		percentageLabel: ".budget__expenses--percentage",
 		container: ".container",
-		expensesPercLabel: ".item__percentage"
+		expensesPercLabel: ".item__percentage",
+		dateLabel: ".budget__title--month"
 	};
 
 	// Format each number in the UI with decimal points and hundredths, + or - sign depending on whether it is an income or an expense, and a comma for every three digits:
@@ -308,6 +309,17 @@ var UIController = ( function() {
 					current.textContent = "---";
 				}
 			});
+		},
+
+
+		// Current Date:
+		displayMonth: function() {
+			var now;
+			var year;
+			var month;
+			// Object contstructor for date. (If we don't pass anything into it, it returns today's date.)
+			now = new Date();
+			year = now.getFullYear
 		},
 
 
