@@ -206,6 +206,16 @@ var UIController = ( function() {
 		return ( type === "exp" ? "- $" : "+ $" ) + int + "." + dec;
 	};
 
+
+	var nodeListForEach = function( list, callback ) {
+		// A for loop which calls the callback function in each iteration:
+		for ( var i = 0; i < list.length; i++ ) {
+			// list[i] is passed in as current. i is passed in as index.
+			callback( list[i], i );
+		}
+	};
+
+
 	return {
 		getInput: function() {
 			return {
@@ -287,14 +297,6 @@ var UIController = ( function() {
 		displayPercentages: function( percentages ) {
 			// Return a nodelist:
 			var fields = document.querySelectorAll( DOMstrings.expensesPercLabel );
-			
-			var nodeListForEach = function( list, callback ) {
-				// A for loop which calls the callback function in each iteration:
-				for ( var i = 0; i < list.length; i++ ) {
-					// list[i] is passed in as current. i is passed in as index.
-					callback( list[i], i );
-				}
-			};
 
 			// When we call this nodeListForEach function, we pass a callback function into it.
 			// This function is assigned to the callback parameter above ("callback").
@@ -339,6 +341,17 @@ var UIController = ( function() {
 
 			// Set the textContent of the class (stored in dateLabel) to whatever value we stored in the year variable:
 			document.querySelector( DOMstrings.dateLabel ).textContent = monthNames[month] + " " + year;
+		},
+
+
+		// Change Event:
+		changedType: function() {
+			// Assign red class to fields and red-focus class to button if type = exp:
+			var fields = document.querySelectorAll(
+				DOMstrings.inputType + ", " + 
+				DOMstrings.inputDescription + ", " + 
+				DOMstrings.inputValue 
+			);
 		},
 
 
