@@ -176,6 +176,35 @@ var UIController = ( function() {
 		expensesPercLabel: ".item__percentage"
 	};
 
+	// Format each number in the UI with decimal points and hundredths, + or - sign depending on whether it is an income or an expense, and a comma for every three digits:
+	// Pass in the number itself, and its type (so we know whether to prepend a + or -).
+	var formatNumber = function( num, type ) {
+		var numSplit;
+		var int;
+		var dec;
+		// Remove the + or - value and work with the absolute number:
+		num = Math.abs( num );
+		// Exactly two decimal points:
+		num = num.toFixed( 2 );
+		// A comma to separate the thousands:
+			// First split the number at the decimal point:
+			numSplit = num.split(".");
+			// This will store the two splits in an array.
+			// The integer part, which is the first element of the array, aka the digits to the left of the decimal point:
+			int = numSplit[0];
+			// The decimal part, which is the second element of the array, aka the digits to the right of the decimal point:
+			dec = numSplit[1];
+			// Only if the integer is larger than three digits:
+			if ( int.length > 3 ) {
+				// Substring: First parameter is where we want to start, second is how many characters we want.
+				// First we take the first number, move over the length of the string MINUS three, and add the comma.
+				// Then we resume at ( int.length - 3 ) and move over another three digits.
+				int = int.substr( 0, ( int.length - 3 ) ) + "," + int.substr( ( int.length - 3 ), 3 );
+			}
+		// + or - before the number (and return everything):
+		return ( type === "exp" ? "- $" : "+ $" ) + int + dec;
+	};
+
 	return {
 		getInput: function() {
 			return {
@@ -204,7 +233,7 @@ var UIController = ( function() {
 			// Replace the placeholder text with actual data received from the object.
 			newHtml = html.replace( "%id%", obj.id );
 			newHtml = newHtml.replace( "%description%", obj.description );
-			newHtml = newHtml.replace( "%value%", obj.value );
+			newHtml = newHtml.replace( "%value%", formatNumber( obj.value, type ) );
 			// Insert the HTML (for whichever element is in use) into the DOM, as the last element in the existing list.
 			document.querySelector(element).insertAdjacentHTML("beforeend" , newHtml)
 		},
@@ -277,34 +306,6 @@ var UIController = ( function() {
 			});
 		},
 
-		// Format each number in the UI with decimal points and hundredths, + or - sign depending on whether it is an income or an expense, and a comma for every three digits:
-		// Pass in the number itself, and its type (so we know whether to prepend a + or -).
-		formatNumber: function( num, type ) {
-			var numSplit;
-			var int;
-			var dec;
-			// Remove the + or - value and work with the absolute number:
-			num = Math.abs( num );
-			// Exactly two decimal points:
-			num = num.toFixed( 2 );
-			// A comma to separate the thousands:
-				// First split the number at the decimal point:
-				numSplit = num.split(".");
-				// This will store the two splits in an array.
-				// The integer part, which is the first element of the array, aka the digits to the left of the decimal point:
-				int = numSplit[0];
-				// The decimal part, which is the second element of the array, aka the digits to the right of the decimal point:
-				dec = numSplit[1];
-				// Only if the integer is larger than three digits:
-				if ( int.length > 3 ) {
-					// Substring: First parameter is where we want to start, second is how many characters we want.
-					// First we take the first number, move over the length of the string MINUS three, and add the comma.
-					// Then we resume at ( int.length - 3 ) and move over another three digits.
-					int = int.substr( 0, ( int.length - 3 ) ) + "," + int.substr( ( int.length - 3 ), 3 );
-				}
-			// + or - before the number (and return everything):
-			return ( type === "exp" ? "- $" : "+ $" ) + int + dec;
-		},
 
 		// Export DOMstrings object for use in the Global App Controller:
 		getDOMstrings: function() {
