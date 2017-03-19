@@ -317,12 +317,28 @@ var UIController = ( function() {
 			var now;
 			var year;
 			var month;
+			var monthNames;
 			// Object contstructor for date. (If we don't pass anything into it, it returns today's date.)
 			now = new Date();
 			year = now.getFullYear();
+			month = now.getMonth();
+			monthNames = [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+			];
 
 			// Set the textContent of the class (stored in dateLabel) to whatever value we stored in the year variable:
-			document.querySelector( DOMstrings.dateLabel ).textContent = year;
+			document.querySelector( DOMstrings.dateLabel ).textContent = monthNames[month] + " " + year;
 		},
 
 
