@@ -313,13 +313,13 @@ var UIController = ( function() {
 
 
 		// Current Date:
-		displayMonth: function() {
+		displayDate: function() {
 			var now;
 			var year;
 			var month;
 			// Object contstructor for date. (If we don't pass anything into it, it returns today's date.)
 			now = new Date();
-			year = now.getFullYear
+			year = now.getFullYear();
 
 			// Set the textContent of the class (stored in dateLabel) to whatever value we stored in the year variable:
 			document.querySelector( DOMstrings.dateLabel ).textContent = year;
@@ -426,6 +426,7 @@ var controller = ( function( budgetCtrl , UICtrl ) {
 		// Initialization function to call the event listeners that are inside this Global App Controller:
 		init: function() {
 			console.log( "Application has started." );
+			UICtrl.displayDate();
 			// Reset everything to zero upon first starting:
 			UICtrl.displayBudget({
 				budget: 0,
