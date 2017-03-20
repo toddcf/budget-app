@@ -1,5 +1,12 @@
 # Wealth Tracker
 
+## How To Use:
+
+1. Select + or - from dropdown for income or expense.
+2. Type in a description and dollar amount.
+3. Pressing enter or clicking the checkmark will add the item to the budget and calculate the totals and percentages.
+4. To remove an item from the budget, hover over it and then click the red X that appears.
+
 ## Modularizing:
 
 1. UI Module.
