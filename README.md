@@ -1,4 +1,4 @@
-# Budget App
+# Wealth Tracker
 
 ## Modularizing:
 
