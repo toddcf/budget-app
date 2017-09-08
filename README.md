@@ -1,6 +1,6 @@
 # Wealth Tracker
 
-![Wealth Tracker](https://github.com/toddcf/tcf-webdesign/blob/master/assets/img/wealth-globe.jpg "Wealth Tracker")
+<p align="center">![Wealth Tracker](https://github.com/toddcf/tcf-webdesign/blob/master/assets/img/wealth-globe.jpg "Wealth Tracker")</p>
 
 ## How To Use:
 
