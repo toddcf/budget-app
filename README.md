@@ -1,5 +1,7 @@
 # Wealth Tracker
 
+![Wealth Tracker](https://github.com/toddcf/tcf-webdesign/blob/master/assets/img/wealth-globe.jpg "Wealth Tracker")
+
 ## How To Use:
 
 1. Select + or - from dropdown for income or expense.
@@ -31,7 +33,7 @@
 - Slice, which returns an array. (A trick for converting the list that querySelectorAll returned . . . back into an array.)
 - forEach (as opposed to for loop).
 - Map. (Loops over an array and returns a brand new array.)
-- parseFloat(). Converts a string into a floating number (a number with decimals).
+- parseFloat(). Converts a string into a floating number (aka a number with decimals).
 - Using parentNode (multiple times if necessary) to traverse the DOM.
 - Math.abs to get the absolute value of a number (no + or - value).
 - toFixed() to set decimal places to a fixed amount.
